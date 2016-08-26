@@ -21,16 +21,65 @@
   };
   
   function isEmpty(obj) {
-    var count = 0;
     for(var key in obj) {
-      count++;
-	  if(count > 0) return false;
+		return false;
     }
     return true;
+  }
+  
+  function sumSalaries(obj) {
+    if(!isEmpty(obj)){
+		var sumOfSalaries = 0;
+		for(var name in salaries) {
+			sumOfSalaries += salaries[name];
+		}
+		return sumOfSalaries;
+	}
+	return 0;
+  }
+  
+  function maxSalary(obj) {
+    if(!isEmpty(obj)){
+		var maxSalary, maxSalaryName;
+		maxSalary = 0;
+		maxSalaryName = '';
+		for(var name in salaries) {
+			if(salaries[name] > maxSalary) {
+				maxSalary = salaries[name];
+				maxSalaryName = name;
+			}
+		}
+		return maxSalary;
+	}
+	return "There is no workers";
+  }
+
+  function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n)
+  }
+    
+  function multiplyNumeric(obj) {
+    for(var key in obj) {
+      if(isNumeric(obj[key])) {
+        obj[key] *= 2;
+       }
+    }
   } 
   
-  alert( isEmpty(salaries) );
-  alert( isEmpty(emptyObject) );
+  console.log("Check if object is empty:");
+  console.log( isEmpty(salaries) );
+  console.log( isEmpty(emptyObject) );
+  console.log("-------------------------");
+  console.log("Sum of all salaries:");
+  console.log( sumSalaries(salaries) );
+  console.log("-------------------------");
+  console.log("Max salary:");
+  console.log( maxSalary(salaries) );
+  console.log( maxSalary(emptyObject) );
+  console.log("-------------------------");
+  console.log("Multiply all salaries x2:");
+  multiplyNumeric(menu); 
+  console.log( "menu width=" + menu.width + " height=" + menu.height + " title=" + menu.title ); 
   
   </script>
 
