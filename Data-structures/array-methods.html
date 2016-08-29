@@ -17,8 +17,19 @@
      }
      obj.className.join(' ');
    }
+   
+	function removeClass(obj, str) {
+	  var classes = obj.className.split(" ");
+	  for(var i = 0; i < classes.length; i++) {
+		if(classes[i] === str) {
+		  classes.splice(i,1);
+		  i--;
+		}
+	  }
+	  obj.className = classes.join(" ");
+	}
 
-   console.log( arr.indexOf('open') );
+   console.log( arr );
 
   </script>
 
