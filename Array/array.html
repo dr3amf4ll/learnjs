@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+
+  <script>
+  
+   var goods = ['pin','vase','monitor'];
+   
+   var styles = ['jazz','blues'];
+   
+   var arr = [5, 4, 3, 8, 0];
+  
+   function lastElement(array) {
+	return array[array.length-1];
+   }
+   
+   function changeLastButOneElement(array, word) {
+	return array[array.length-2] = word;
+   }
+   
+   function randomNum(min,max) {
+	return min + Math.floor(Math.random() * (max + 1 - min));
+   }
+   
+   function getRandomElement(array) {
+	return array[randomNum(0,array.length-1)];
+   }
+   
+   function findArray(array, value) {
+	return array.indexOf(value);
+   }
+   
+   function filterRange(arr, a, b){
+	var filteredArray = [];
+
+	for(var i = 0; i < arr.length; i++){
+	  if(arr[i] >= a && arr[i] <= b){
+	    filteredArray.push(arr[i]);
+	  }
+	}
+	
+	return filteredArray;
+   }
+   
+   function generateArray(min, max){
+	var array = [];
+	
+	for(var i = min; i < max+1; i++){
+	  array.push(i);
+	}
+	 
+	return array;
+   }
+   
+   function sumArrayNumbers(arr){
+	var sum = 0;
+	
+	for(var i = 0; i < arr.length; i++){
+	  sum += arr[i];
+	}
+	
+	return sum;
+   }
+   
+   function erastofen(arr){
+   
+	for(var i = 0; i < arr.length; i++){
+	  current = i;
+	  for(var j = 0; j < arr.length; j++){
+	   if(arr[j] % arr[current] == 0 && arr[j] != arr[current]){
+	     //arr.splice(j,1);
+	     arr[j] = 0;
+	   }
+	  }
+	}
+	
+	return arr;
+   }
+   
+   function getMaxSubSum(arr) {
+      var maxSum = 0;
+      for(var i = 0; i < arr.length; i++) {
+        var currentSum = 0;
+        for(var j = i; j < arr.length; j++) {
+          currentSum += arr[j];
+          if(currentSum > maxSum) {
+           maxSum = currentSum;
+          }
+        }
+      }
+      return maxSum;
+    } 
+  
+   console.log( lastElement(goods) );
+   goods.push("computer");
+   console.log("------------------");
+   console.log(goods);
+   console.log("------------------");
+   console.log(styles);
+   styles.push("rock'n'roll");
+   console.log(styles);
+   changeLastButOneElement(styles, "Classic");
+   console.log(styles);
+   console.log( styles.shift() );
+   styles.unshift("Rap", "Reggae");
+   console.log(styles);
+   console.log("------------------");
+   console.log( getRandomElement(styles) );
+   console.log( findArray(goods, "pin") );
+   console.log( findArray(styles, "Classic") );
+   console.log( findArray(styles, "None") );
+   console.log( filterRange(arr, 3, 5) );
+   console.log("------------------");
+   var erastofenResult = erastofen( generateArray(2, 100), 0 );
+   console.log( erastofenResult );
+   console.log( sumArrayNumbers( erastofenResult ) );
+   console.log(getMaxSubSum([1, 2, 3]) );
+  </script>
+
+</body>
+</html>
