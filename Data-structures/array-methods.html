@@ -28,6 +28,33 @@
 	  }
 	  obj.className = classes.join(" ");
 	}
+	
+	function capitalize(str) {
+      if(str){
+      str = str[0].toUpperCase() + str.substring(1);
+      return str;
+      }
+    }
+
+    function camelize(str) {
+      var arr;
+      arr = str.split('-');
+      for(var i = 1; i < str.length; i++) {
+        arr[i] = capitalize(arr[i]);
+      }
+      arr = arr.join('');
+      return arr;
+    }
+	
+	function filterRangeInPlace(arr, min, max) {
+      for(var i = 0; i < arr.length; i++) {
+        if(arr[i] <= min || arr[i] >= max) {
+          arr.splice(i,1);
+        }
+      }
+    }
+    
+    //console.log( camelize("list-style-image") );
 
    console.log( arr );
 
