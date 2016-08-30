@@ -1,0 +1,11 @@
+    function getSums(arr) {
+      var subSums = [];
+      var subSum;
+      arr.reduce(function(previous, current) {
+       subSum = previous + current;
+       subSums.push(subSum);
+       return subSum;
+      }, 0);
+      //alert(subSums);
+      return subSums;
+    }
