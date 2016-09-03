@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
 </head>
@@ -81,7 +81,88 @@
 	
 	people.sort(sortByAge);
 	
-    
+	var list = {
+	  value: 1,
+	  next: {
+		value: 2,
+		next: {
+		  value: 3,
+		  next: {
+			value: 4,
+			next: null
+		  }
+		}
+	  }
+	};
+	
+	function printListCycle(list) {
+	  while(list){
+	    console.log(list.value);
+		list = list.next;
+	  }
+	}
+	
+	function printListRecursive(list) {
+	  if(list) {
+	    console.log(list.value);
+		if(list.next) {
+	      printListRecursive(list.next);
+		}
+	  }
+	}
+	
+	function printReverseListRecursive(list) {
+	  if(list) {
+		if(list.next) {
+	       printReverseListRecursive(list.next);
+		}
+		console.log(list.value);
+	  }
+	}
+	
+	function printReverseListCycle(list) {
+	  var arr = [];
+	  
+	  while(list){
+	    arr.push(list.value);
+		list = list.next;
+	  }
+	  
+	  arr.reverse();
+	  
+	  arr.forEach(function(item) {
+	    console.log(item);
+	  });
+	}
+	
+	var acr = ["воз", "киборг", "корсет", "ЗОВ", "гробик", "костер", "сектор"];
+	var strings = ["кришна", "кришна", "харе", "харе", "харе", "харе", "кришна", "кришна", "8-()"];
+	
+    function aclean(array) {
+	  var arr = array.slice();
+	  var current;
+      for(var i = 0; i < arr.length; i++) {
+        current = arr[i];
+        for(var j = i + 1; j < arr.length; j++) {
+          if(current.toLowerCase().split('').sort().join('') === arr[j].toLowerCase().split('').sort().join('')) {
+		    arr.splice(j,1);
+			j--;
+          }
+        }
+      }
+      return arr;
+    }
+	
+	function unique(arr) {
+	  var obj = {};
+	  var key;
+	  for(var i = 0; i < arr.length; i++) {
+	    key = arr[i];
+	    obj[key] = true;
+	  }
+	  return Object.keys(obj);
+	}
+	
     //console.log( camelize("list-style-image") );
 	console.log(numbers);
 	console.log(numbers.sort( numbersReverseOrder ));
@@ -89,6 +170,15 @@
 	console.log(sortArray(web));
 	console.log(numbers.sort( randomOrder ));
 	console.log(people);
+	
+	printListCycle(list);
+	printListRecursive(list);
+	printReverseListRecursive(list);
+	printReverseListCycle(list);
+		
+	console.log( aclean(acr) );
+	console.log( aclean(strings) );
+	console.log( unique(strings) );
 
   </script>
 
